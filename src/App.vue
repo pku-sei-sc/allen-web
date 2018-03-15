@@ -3,10 +3,10 @@
     <el-container class="container">
       <el-aside class="aside">
         <!--<img src="./assets/logo.png">-->
-        <el-menu>
-          <el-menu-item>数据</el-menu-item>
-          <el-menu-item>模型</el-menu-item>
-          <el-menu-item>检测</el-menu-item>
+        <el-menu @select="handleSelect">
+          <el-menu-item index="/data">数据</el-menu-item>
+          <el-menu-item index="/model">模型</el-menu-item>
+          <el-menu-item index="/detect">检测</el-menu-item>
         </el-menu>
       </el-aside>
 
@@ -19,7 +19,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    handleSelect (key, keyPath) {
+      this.$router.push(key)
+    }
+  }
 }
 </script>
 
