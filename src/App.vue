@@ -6,6 +6,7 @@
         <el-menu @select="handleSelect">
           <el-menu-item index="/data">数据</el-menu-item>
           <el-menu-item index="/model">模型</el-menu-item>
+          <el-menu-item index="/infer">推断</el-menu-item>
           <el-menu-item index="/detect">检测</el-menu-item>
         </el-menu>
       </el-aside>
@@ -37,14 +38,16 @@ export default {
     color: #2c3e50;
   }
   .container {
-    height: 500px;
+    /*height: 500px;*/
     /*border: 1px solid #eee;*/
   }
   .aside {
     /*background: aqua;*/
     max-width: 150px;
+    position: fixed;
   }
   .main {
     background: aliceblue;
+    margin-left: 150px;
   }
 </style>
