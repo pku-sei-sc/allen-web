@@ -59,16 +59,20 @@ export default {
         method: 'kl',
         top: null
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      timer: null
     }
   },
   mounted: function () {
     this.getAllInference()
     this.getAllModel()
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.getAllInference()
       this.getAllModel()
     }, 5000)
+  },
+  beforeDestroy: function () {
+    clearInterval(this.timer)
   },
   filters: {
     getDate: val => {
@@ -82,7 +86,13 @@ export default {
     getAllInference () {
       _.get('/topics-model/inference').then(resp => {
         _.D(resp.data)
-        this.inferences = resp.data.reverse()
+        this.inferences = []
+        // this.dataChunks = resp.data.reverse()
+        for (let i in resp.data) {
+          if (resp.data[i].status === 'Finished') {
+            this.inferences.unshift(resp.data[i])
+          }
+        }
       })
     },
     getAllModel () {

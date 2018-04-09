@@ -92,18 +92,22 @@ export default {
         burnIn: null,
         thinning: null
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      timer: null
     }
   },
   mounted: function () {
     this.getAllInference()
     this.getAllData()
     this.getAllModel()
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.getAllInference()
       this.getAllData()
       this.getAllModel()
     }, 5000)
+  },
+  beforeDestroy: function () {
+    clearInterval(this.timer)
   },
   filters: {
     getDate: val => {

@@ -89,7 +89,7 @@ export default {
     return {
       dataChunks: [],
       dataSources: [],
-      showAddModel: false,
+      showAddData: false,
       showAddDataSource: false,
       addForm: {
         source: '',
@@ -104,16 +104,20 @@ export default {
         username: '',
         password: ''
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      timer: null
     }
   },
   mounted: function () {
     this.getAllData()
     this.getAllSource()
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.getAllData()
       this.getAllSource()
     }, 5000)
+  },
+  beforeDestroy: function () {
+    clearInterval(this.timer)
   },
   filters: {
     getDate: val => {
@@ -175,7 +179,7 @@ export default {
           this.getAllData()
         })
 
-        this.showAddModel = false
+        this.showAddData = false
       })
     },
     sendAddSource () {

@@ -93,16 +93,20 @@ export default {
         showTopicsInterval: null,
         showTopicsNum: null
       },
-      formLabelWidth: '120px'
+      formLabelWidth: '120px',
+      timer: null
     }
   },
   mounted: function () {
     this.getAllModel()
     this.getAllData()
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.getAllModel()
       this.getAllData()
     }, 5000)
+  },
+  beforeDestroy: function () {
+    clearInterval(this.timer)
   },
   filters: {
     getDate: val => {
