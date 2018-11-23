@@ -5,7 +5,8 @@ import DataManage from '@/components/DataManage'
 import ModelManage from '@/components/ModelManage'
 import InferManage from '@/components/InferManage'
 import DetectManage from '@/components/DetectManage'
-
+import AbnormalDetect from '@/components/AbnormalDetect'
+import show from '@/components/show'
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +35,16 @@ export default new Router({
       path: '/detect',
       name: 'DetectManage',
       component: DetectManage
+    },
+    {
+      path: '/ad',
+      name: 'AbnormalDetect',
+      component: AbnormalDetect
+    },
+    {
+      path: '/show',
+      name: 'show',
+      component: show
     }
   ]
 })

@@ -6,8 +6,11 @@
         <el-menu @select="handleSelect">
           <el-menu-item index="/data">数据</el-menu-item>
           <el-menu-item index="/model">模型</el-menu-item>
-          <el-menu-item index="/infer">推断</el-menu-item>
-          <el-menu-item index="/detect">检测</el-menu-item>
+          <!--<el-menu-item index="/infer">推断</el-menu-item>-->
+          <!--<el-menu-item index="/detect">检测</el-menu-item>-->
+          <el-menu-item index="/ad">推断and检测</el-menu-item>
+          <el-menu-item index="/show">展示</el-menu-item>
+
         </el-menu>
       </el-aside>
 
